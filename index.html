@@ -1,0 +1,246 @@
+<script> var mtoken = "1"; </script>
+
+<!doctype html>
+
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Barkod Okuyucu Proje</title>
+    <link rel="icon" href="img/logo.ico" type="image/x-icon" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--
+        <link href="lib/bootstrap.min.css" rel="stylesheet">
+    -->
+
+    <link href="lib/fontawesome-all.min.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/7059aa82dd.js" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+     <!--DATE RANGE FILTER-->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+
+    <!-- for iban mask-->
+
+    <script type="text/javascript" src="lib/jquery.mask.min.js"></script>
+
+    <!-- for dialog -->
+
+    <link rel="stylesheet" href="lib/bootstrap-dialog.min.css" />
+
+    <script type="text/javascript" src="lib/bootstrap-dialog.min.js"></script>
+
+    <!-- For switch -->
+
+    <link rel="stylesheet" href="lib/toggles.min.css" />
+
+    <!-- For sweet modal alert -->
+
+    <link rel="stylesheet" href="https://cdn.modaselvim.net/swmodal/jquery.sweet-modal.min.css" />
+
+    <script src="https://cdn.modaselvim.net/swmodal/jquery.sweet-modal.min.js"></script>
+
+    <script type="text/javascript" src="lib/iban.js"></script>
+
+    <script type="text/javascript" src="lib/js.cookie.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.serialize-object.min.js"></script>
+
+    <script type="text/javascript" src="lib/JsBarcode.code128.min.js"></script>
+
+    <script type="text/javascript" src="lib/jquery.trUpperCase2.js"></script>
+
+
+    <script type="text/javascript" src="export.js"></script>
+    <script type="text/javascript" src="tipped.js"></script>
+    <script type="text/javascript" src="pts_handle.js"></script>
+    <script type="text/javascript" src="pts_general_handle.js"></script>
+    <script type="text/javascript" src="handled_pts.js"></script>
+    <script type="text/javascript" src="pts_exit.js"></script>
+
+    <style>
+
+        header{
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 200px;
+        }
+        .card{
+            border-style: none;
+            border-radius: 10px;
+        }
+        body{
+            font-family: Poppins;
+        }
+        div a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            display:inline-block;
+
+        }
+        ul {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            display: inline-block;
+        }
+        ul li:hover {
+            background:  #c20062;
+            border-radius: 5px;
+        }
+        ul li:hover ul {display: block;}
+        ul li ul {
+            position: absolute;
+            width: 200px;
+            display: none;
+        }
+        ul li ul li {
+            background: white;
+            display: block;
+        }
+        ul li ul li a {display:block !important;}
+        ul li ul li:hover {background:  white;}
+        mtable{
+            border-style: none;
+
+        }
+        mtable tr th{
+            border-radius: 5px;
+        }
+        mtable tr td{
+            border-radius: 5px;
+            user-select: all;
+        }
+        .scrollup {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            bottom: 50px;
+            right: 100px;
+            display: none;
+            text-indent: -9999px;
+            background: url('img/icon.png') no-repeat;
+            border-radius: 5px;
+            background-color: #a80055;
+        }
+        .btn btn-default buttons-excel buttons-html5{
+            background-color: #a80055 ;
+            color: #a80055;
+        }
+        .paginate_button previous disabled{
+            background-color: peachpuff;
+            color:palegreen;
+        }
+        .paginate_button active{
+            background-color: peachpuff;
+        }
+    </style>
+
+</head>
+<body>
+
+<link rel="stylesheet" type="text/css" href="https://kargo.modaselvim.net/css/datatables.min.css"/>
+<script type="text/javascript" src="https://kargo.modaselvim.net/js/datatables.min.js"></script>
+
+<nav class="navbar navbar-fixed-top" style="background-color:#a80055 ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="index.html">
+                <img src="img/icon.png" style="width: 40px"  >
+            </a>
+        </div>
+        <ul class="nav navbar-nav" >
+            <li><a href="#my_div" class="export" >İHRACAT</a></li>
+            <li><a href="#my_div" class="tipped">FİLTRELE</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"  >PTS
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#my_div" class="ptsHandle">PTS İŞLE</a></li>
+                    <li><a href="#my_div" class="ptsGeneralHandle"  >PTS GENEL İŞLE</a></li>
+                    <li><a href="#my_div" class="handledPts">İŞLENDİ PTS</a></li>
+                    <li><a href="#my_div" class="ptsExit">PTS ÇIKIŞ</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">DHL
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu"  >
+                    <li><a href="#my_div" class="dhlHandle">DHL İŞLE</a></li>
+                    <li><a href="#my_div" class="dhlGeneralHandle">DHL GENEL İŞLE</a></li>
+                    <li><a href="#my_div" class="handledDhl">İŞLENDİ DHL</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"  >PTT
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#my_div" class="pttHandle">PTT İŞLE</a></li>
+                    <li><a href="#my_div" class="pttGeneralHandle">PTT GENEL İŞLE</a></li>
+                    <li><a href="#my_div" class="handledPtt">İŞLENDİ PTT</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" >UPS
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#my_div" class="upsHandle">UPS İŞLE</a></li>
+                    <li><a href="#my_div" class="upsGeneralHandle">UPS GENEL İŞLE</a></li>
+                    <li><a href="#my_div" class="handledUps">İŞLENDİ UPS</a></li>
+                    <li><a href="#my_div" class="upsExit">UPS ÇIKIŞ</a></li>
+
+                </ul>
+            </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> KULLANICI</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> ÇIKIŞ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <div id="my_div"></div>
+</header>
+
+
+<footer class="footer" >
+    <div class="jumbotron" style="background-color: #a80055 ;margin-bottom:0px;height: 0px;margin-top: 20px">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-12  col-sm-12  text-center " style="color: white">
+                Copyright © 2021 <a href="#" style="color: #d1bd2d;text-decoration: none">Moda Selvim</a> <a href="#"></a> All rights reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+
+</html>
